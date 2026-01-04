@@ -24,7 +24,7 @@
   --color-card-bg: var(--card-bg);
   --color-card-border: var(--card-border);
 
-  --font-arcade: "Courier New", Courier, monospace;
+  --font-arcade: var(--font-vt323), "Courier New", Courier, monospace;
 }
 
 body {
