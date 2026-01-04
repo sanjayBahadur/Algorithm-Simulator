@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Algorithm Simulator - Retro Arcade Edition
+
+A production-ready Next.js application that visualizes algorithms with a 1980s neon arcade aesthetic.
+
+## Features
+- **Retro UI**: CRT scanlines, neon glows, and pixel-inspired components.
+- **Modular Architecture**: Easy to add new algorithms by creating a new folder and registering it.
+- **Interactive Controls**: Play, Pause, Reset, Step-by-step, and Speed control.
+- **Initial Algorithms**:
+  - **BFS (Breadth-First Search)**: Graph traversal using a queue.
+  - **DFS (Depth-First Search)**: Graph traversal using a stack.
+  - **Binary Search**: Fast searching in a sorted array.
+
+## Tech Stack
+- **Framework**: Next.js 14+ (App Router)
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS 4
+- **State Management**: Custom `useRunner` hook for playback logic.
 
 ## Getting Started
 
-First, run the development server:
-
+### Installation
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Development
+```bash
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Adding a New Algorithm
 
-## Learn More
+The project is designed to be extensible. To add a new algorithm (e.g., `QuickSort`):
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Create Folder**: `src/algorithms/quicksort/`
+2.  **Define Runner**: Create `runner.ts` that exports a `createSteps` function. This function should return an array of `Step<TState>` objects.
+3.  **Define View**: Create `View.tsx` which is a React component that takes the current state and renders the visualization.
+4.  **Export Config**: Create `index.ts` exporting an `AlgorithmConfig` object.
+5.  **Register**: Add your config to `src/algorithms/registry.ts`.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Folder Structure
+- `src/app`: Next.js pages and global styles.
+- `src/components`: Reusable UI components (ArcadeFrame, Controls).
+- `src/algorithms`: All algorithm-specific logic and views.
+- `src/lib`: Core hooks and utilities (e.g., `useRunner`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Deployment
+This app is ready to be deployed on **Vercel**. Just push your code to GitHub and connect the repository.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+Built with ❤️ for Algorithm Enthusiasts.
